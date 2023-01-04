@@ -9,9 +9,6 @@ import logging
 import warnings
 from typing import Any, Optional, Sequence
 
-import onnx
-from onnx import ValueInfoProto, helper
-from onnx.defs import onnx_opset_version
 from typing_extensions import Protocol
 
 import onnxscript
@@ -19,6 +16,82 @@ from onnxscript import type_annotation as ta
 from onnxscript import values
 from onnxscript.onnx_types import ONNXType
 from onnxscript.sourceinfo import SourceInfo
+
+import onnx
+from onnx import ValueInfoProto, helper
+from onnx.defs import onnx_opset_version
+
+# # Code below (import and make_graph) replaces the above 3 imports to make them pure python.
+# # This import relies on the onnx/onnx.py file in this repo which was generated using 'prepare-for-web.ipynb'
+# from onnx import (
+#     # IR_VERSION,
+#     # AttributeProto,
+#     # FunctionProto,
+#     GraphProto,
+#     # MapProto,
+#     # ModelProto,
+#     NodeProto,
+#     # OperatorSetIdProto,
+#     # OptionalProto,
+#     # SequenceProto,
+#     SparseTensorProto,
+#     TensorProto,
+#     # TensorShapeProto,
+#     # TrainingInfoProto,
+#     # TypeProto,
+#     ValueInfoProto,
+#     # defs,
+#     # mapping,
+# )
+# class Helper:
+#     # From: https://github.com/onnx/onnx/blob/f1cd4167d5ffd6e0ffbb2e9d58e8e831aeebb428/onnx/helper.py
+#     def make_graph(
+#         self,
+#         nodes: Sequence[NodeProto],
+#         name: str,
+#         inputs: Sequence[ValueInfoProto],
+#         outputs: Sequence[ValueInfoProto],
+#         initializer: Optional[Sequence[TensorProto]] = None,
+#         doc_string: Optional[str] = None,
+#         value_info: Optional[Sequence[ValueInfoProto]] = None,
+#         sparse_initializer: Optional[Sequence[SparseTensorProto]] = None,
+#     ) -> GraphProto:
+#         """Construct a GraphProto
+#         Arguments:
+#             nodes: list of NodeProto
+#             name (string): graph name
+#             inputs: list of ValueInfoProto
+#             outputs: list of ValueInfoProto
+#             initializer: list of TensorProto
+#             doc_string (string): graph documentation
+#             value_info: list of ValueInfoProto
+#             sparse_initializer: list of SparseTensorProto
+#         Returns:
+#             GraphProto
+#         """
+#         if initializer is None:
+#             initializer = []
+#         if sparse_initializer is None:
+#             sparse_initializer = []
+#         if value_info is None:
+#             value_info = []
+#         graph = GraphProto()
+#         graph.node.extend(nodes)
+#         graph.name = name
+#         graph.input.extend(inputs)
+#         graph.output.extend(outputs)
+#         graph.initializer.extend(initializer)
+#         graph.sparse_initializer.extend(sparse_initializer)
+#         graph.value_info.extend(value_info)
+#         if doc_string:
+#             graph.doc_string = doc_string
+#         return graph
+
+# helper = Helper()
+
+
+
+
 
 # A simple IR (Function, Stmt, Attr, Var):
 
