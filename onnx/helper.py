@@ -24,6 +24,7 @@ from typing import (
 import google.protobuf.message
 import numpy as np
 
+# Joe: I changed this from `onnx` to `.onnxproto`
 from .onnxproto import (
     # IR_VERSION,
     AttributeProto,
@@ -45,8 +46,8 @@ from .onnxproto import (
     # mapping,
 )
 
-import mapping
-IR_VERSION = 7 # TODO: work out how to get proper value
+from . import mapping
+IR_VERSION = 8 # TODO: work out how to get 'proper' value? guessing that I can use latest version so long as I'm using latest version of runtime
 
 # Dummy version of onnx.defs.onnx_opset_version: https://github.com/onnx/onnx/blob/f1cd4167d5ffd6e0ffbb2e9d58e8e831aeebb428/onnx/defs/__init__.py#L19
 class Defs:

@@ -3,6 +3,7 @@ from typing import Any, Dict, NamedTuple, Union, cast
 
 import numpy as np
 
+# Joe: I changed this import from `onnx` to `.onnxproto`
 from .onnxproto import OptionalProto, SequenceProto, TensorProto
 
 TensorDtypeMap = NamedTuple(
